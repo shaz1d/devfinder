@@ -4,6 +4,15 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+  }
+  :root[data-theme="dark"] {
+    --app-bg: 222deg 40% 13%;
+    --content-bg: 224deg 40% 20%;
+    --accent: 211deg 100% 50%;
+    --desc: 224deg 11% 60%;
+    --title: 0deg 0% 100%;
+  }
   html {
     font-family: "Space Mono", monospace, system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
