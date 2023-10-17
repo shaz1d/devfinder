@@ -1,4 +1,4 @@
-import Container from "./components/Layout/Container";
+import Container from "./components/Container/Container";
 import DarkTheme from "./assets/icon-dark.svg";
 import LightTheme from "./assets/icon-light.svg";
 import { useEffect, useState } from "react";
