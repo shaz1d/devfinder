@@ -2,6 +2,7 @@ import Container from "./components/Container/Container";
 import DarkTheme from "./assets/icon-dark.svg";
 import LightTheme from "./assets/icon-light.svg";
 import { useEffect, useState } from "react";
+import Search from "./components/Search";
 
 function App() {
   const userPrefersDark = window.matchMedia(
@@ -36,6 +37,9 @@ function App() {
             </button>
           </div>
         </header>
+        <main>
+          <Search></Search>
+        </main>
       </Container>
     </div>
   );
