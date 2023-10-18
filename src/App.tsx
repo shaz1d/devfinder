@@ -1,14 +1,16 @@
-import Container from "./components/Container/Container";
+import Container from "./components/Container";
 import DarkTheme from "./assets/icon-dark.svg";
 import LightTheme from "./assets/icon-light.svg";
 import { useEffect, useState } from "react";
 import Search from "./components/Search";
+import Result from "./components/Result";
 
 function App() {
   const userPrefersDark = window.matchMedia(
     "(prefers-color-scheme:dark)"
   ).matches;
   const [theme, setTheme] = useState(userPrefersDark ? "dark" : "light");
+  const [searchInput, setSearchInput] = useState("");
 
   const handleThemeSwitch = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
@@ -37,8 +39,9 @@ function App() {
             </button>
           </div>
         </header>
-        <main>
-          <Search></Search>
+        <main className="mt-8 flex flex-col gap-5">
+          <Search state={searchInput} setState={setSearchInput} />
+          <Result />
         </main>
       </Container>
     </div>
