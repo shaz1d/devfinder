@@ -11,11 +11,21 @@ type ResultProps = {
     login?: string;
     name?: string;
     location?: string;
+    created_at?: string;
+    public_repos?: number;
   };
 };
 
 const Result = ({ userData }: ResultProps) => {
-  const { avatar_url, bio, login, name, location } = userData;
+  const { avatar_url, bio, login, name, location, created_at } = userData;
+  const formatDate = (isoDate: string): string => {
+    const date = new Date(isoDate);
+    return date.toLocaleString("en-GB", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  };
   return (
     <div className="p-8 rounded-[15px] bg-cbg">
       {Object.keys(userData).length === 0 ? (
@@ -46,7 +56,7 @@ const Result = ({ userData }: ResultProps) => {
                   <h2 className="font-bold text-2xl">{name}</h2>
                   <p className=" text-accent">@{login}</p>
                 </div>
-                <p>Joined 25 Jan 2011</p>
+                <p>{created_at && formatDate(created_at)}</p>
               </div>
             </div>
             <p>{bio ? bio : "User has no bio"}</p>
