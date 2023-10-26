@@ -11,9 +11,23 @@ function App() {
   ).matches;
   const [theme, setTheme] = useState(userPrefersDark ? "dark" : "light");
   const [searchInput, setSearchInput] = useState("");
+  const [userData, setUserData] = useState({});
+  const URL = "https://api.github.com/users/";
 
   const handleThemeSwitch = () => {
     setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+  const getUserData = async () => {
+    try {
+      const res = await fetch(URL + searchInput);
+      if (!res.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await res.json();
+      setUserData(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -40,8 +54,13 @@ function App() {
           </div>
         </header>
         <main className="mt-8 flex flex-col gap-5">
-          <Search state={searchInput} setState={setSearchInput} />
-          <Result />
+          <Search
+            state={searchInput}
+            setState={setSearchInput}
+            setUserData={setUserData}
+            getUserData={getUserData}
+          />
+          <Result userData={userData} />
         </main>
       </Container>
     </div>
