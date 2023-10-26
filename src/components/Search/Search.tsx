@@ -14,8 +14,16 @@ const Search = ({ state, setState, getUserData, setUserData }: SearchProps) => {
       setUserData({});
     }
   };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    getUserData();
+  };
   return (
-    <div className="relative flex items-center gap-3 p-[10px] pl-6 rounded-[15px] bg-cbg">
+    <form
+      onSubmit={handleSubmit}
+      className="relative flex items-center gap-3 p-[10px] pl-6 rounded-[15px] bg-cbg"
+    >
       <img src={SearchIcon} alt="" />
       <input
         className="bg-cbg w-full outline-none text-lg"
@@ -25,12 +33,12 @@ const Search = ({ state, setState, getUserData, setUserData }: SearchProps) => {
         onChange={handleChange}
       />
       <button
-        onClick={getUserData}
+        type="submit"
         className="bg-accent text-[white] px-6 py-3 rounded-[8px] font-bold"
       >
         Search
       </button>
-    </div>
+    </form>
   );
 };
 
