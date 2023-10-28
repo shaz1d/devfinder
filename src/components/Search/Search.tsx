@@ -22,7 +22,7 @@ const Search = ({ state, setState, getUserData, setUserData }: SearchProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative flex items-center gap-3 p-[10px] pl-6 rounded-[15px] bg-cbg"
+      className="relative flex items-center gap-3 p-[10px] pl-6 rounded-[15px] bg-cbg shadow-lg"
     >
       <img src={SearchIcon} alt="" />
       <input

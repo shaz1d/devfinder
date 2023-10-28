@@ -11,6 +11,7 @@ function App() {
   ).matches;
   const [theme, setTheme] = useState(userPrefersDark ? "dark" : "light");
   const [searchInput, setSearchInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState({});
   const URL = "https://api.github.com/users/";
 
@@ -19,12 +20,11 @@ function App() {
   };
   const getUserData = async () => {
     try {
+      setIsLoading(true);
       const res = await fetch(URL + searchInput);
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
-      }
       const data = await res.json();
       setUserData(data);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -60,7 +60,7 @@ function App() {
             setUserData={setUserData}
             getUserData={getUserData}
           />
-          <Result userData={userData} />
+          <Result userData={userData} isLoading={isLoading} />
         </main>
       </Container>
     </div>
