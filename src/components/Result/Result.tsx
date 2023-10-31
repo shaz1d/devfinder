@@ -1,9 +1,5 @@
 import userAvater from "../../assets/user.png";
-import locationIcon from "../../assets/icon-location.svg";
-import twitterIcon from "../../assets/icon-twitter.svg";
-import linkIcon from "../../assets/icon-url.svg";
-import companyIcon from "../../assets/icon-company.svg";
-import { Loader } from "../Icons";
+import { Loader, Company, Location, GitLink, Twitter } from "../Icons";
 
 type ResultProps = {
   userData: {
@@ -69,7 +65,7 @@ const Result = ({ userData, isLoading }: ResultProps) => {
         </div>
       ) : (
         <div className="flex gap-5 ">
-          <div className=" shrink-0">
+          <div className="shrink-0">
             <img
               className="w-24 h-24 object-cover rounded-full hidden sm:block"
               src={avatar_url}
@@ -114,30 +110,51 @@ const Result = ({ userData, isLoading }: ResultProps) => {
             </div>
             <div className="grid grid-cols-2 gap-5 justify-between mt-7">
               <div className="flex flex-col gap-5">
-                <a className="flex items-center gap-3 text-sm" href="">
+                <div
+                  className={`flex items-center gap-3 text-sm ${
+                    location ? "text-title fill-title" : "text-desc fill-desc"
+                  }`}
+                >
                   {" "}
-                  <img src={locationIcon} alt="" />
+                  <Location />
                   <span>{location ? location : "Not Available"}</span>
-                </a>
-                <a className="flex items-center gap-3 text-sm" href="">
+                </div>
+                <a
+                  className={`flex items-center gap-3 text-sm ${
+                    html_url ? "text-title fill-title" : "text-desc fill-desc"
+                  }`}
+                  target="_blank"
+                  href={html_url}
+                >
                   {" "}
-                  <img src={linkIcon} alt="" />
+                  <GitLink />
                   <span>{html_url}</span>
                 </a>
               </div>
               <div className="flex flex-col gap-5">
-                <a className="flex items-center gap-3 text-sm" href="">
+                <a
+                  className={`flex items-center gap-3 text-sm ${
+                    tweitter_username
+                      ? "text-title fill-title"
+                      : "text-desc fill-desc"
+                  }`}
+                  href=""
+                >
                   {" "}
-                  <img src={twitterIcon} alt="" />
+                  <Twitter />
                   <span>
                     {tweitter_username ? tweitter_username : "Not Available"}
                   </span>
                 </a>
-                <a className="flex items-center gap-3 text-sm" href="">
+                <div
+                  className={`flex items-center gap-3 text-sm ${
+                    company ? "text-title fill-title" : "text-desc fill-desc"
+                  }`}
+                >
                   {" "}
-                  <img src={companyIcon} alt="" />
+                  <Company />
                   <span>{company ? company : "Not Available"}</span>
-                </a>
+                </div>
               </div>
             </div>
           </div>
