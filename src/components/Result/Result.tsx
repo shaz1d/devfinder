@@ -73,7 +73,7 @@ const Result = ({ userData, isLoading }: ResultProps) => {
             />
           </div>
           <div>
-            <div className="flex gap-3 sm:gap-5 mb-6">
+            <div className="flex gap-4 sm:gap-5 mb-6">
               <img
                 className="w-20 h-20 object-cover rounded-full sm:hidden"
                 src={avatar_url}
