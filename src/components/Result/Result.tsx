@@ -46,7 +46,7 @@ const Result = ({ userData, isLoading }: ResultProps) => {
   };
   console.log(message);
   return (
-    <div className="p-8 rounded-[15px] bg-cbg shadow-lg">
+    <div className="p-6 sm:p-8 rounded-[15px] bg-cbg shadow-lg">
       {isLoading ? (
         <div className="">
           <Loader></Loader>
@@ -65,23 +65,23 @@ const Result = ({ userData, isLoading }: ResultProps) => {
         </div>
       ) : (
         <div className="flex gap-5 ">
-          <div className="shrink-0">
+          <div className="shrink-0 hidden sm:block">
             <img
-              className="w-24 h-24 object-cover rounded-full hidden sm:block"
+              className="w-24 h-24 object-cover rounded-full "
               src={avatar_url}
               alt="img"
             />
           </div>
           <div>
-            <div className="flex gap-5 mb-6">
+            <div className="flex gap-3 sm:gap-5 mb-6">
               <img
-                className=" w-24 h-24 object-cover rounded-full sm:hidden"
-                src={userAvater}
+                className="w-20 h-20 object-cover rounded-full sm:hidden"
+                src={avatar_url}
                 alt="img"
               />
               <div className="flex flex-col flex-grow gap-2 sm:flex-row sm:justify-between">
                 <div>
-                  <h2 className="font-bold text-2xl">{name}</h2>
+                  <h2 className="font-bold text-xl sm:text-2xl">{name}</h2>
                   <p className=" text-accent">@{login}</p>
                 </div>
                 <p>Joined {created_at && formatDate(created_at)}</p>
@@ -108,7 +108,7 @@ const Result = ({ userData, isLoading }: ResultProps) => {
                 <h3 className="font-bold">{following}</h3>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-5 justify-between mt-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 justify-between mt-7">
               <div className="flex flex-col gap-5">
                 <div
                   className={`flex items-center gap-3 text-sm ${
