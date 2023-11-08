@@ -128,7 +128,7 @@ const Result = ({ userData, isLoading }: ResultProps) => {
                 >
                   {" "}
                   <GitLink />
-                  <span>{html_url}</span>
+                  <span className="break-words">{html_url}</span>
                 </a>
               </div>
               <div className="flex flex-col gap-5">
